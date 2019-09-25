@@ -1,3 +1,4 @@
+from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.utils import module_loading
 
@@ -24,6 +25,10 @@ def get_encoder_class():
 
 def get_conflict_code():
     return get_idempotency_key_settings().get('CONFLICT_STATUS_CODE', status.HTTP_409_CONFLICT)
+
+
+def get_header_name():
+    return get_idempotency_key_settings().get('HEADER', 'HTTP_IDEMPOTENCY_KEY')
 
 
 def get_storage_settings():
